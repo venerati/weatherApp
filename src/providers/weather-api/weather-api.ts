@@ -15,11 +15,12 @@ export class WeatherApiProvider {
 
   constructor(public http: Http) {
     console.log('Hello WeatherApiProvider Provider');
-    this.url = 'http://api.wunderground.com/api/'+ this.apiKey +'/conditions/q/';
+    this.url = 'http://api.wunderground.com/api/'+this.apiKey+'/conditions/q/';
   }
 
-  getWeather(state, city) {
-  	return this.http.get(this.url+state+city)
+  getWeather(city, state) {
+  	return this.http.get(this.url+state+'/'+city+'.json')
+  		.map(res => res.json());
   }
 
 }
