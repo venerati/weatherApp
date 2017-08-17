@@ -18,6 +18,7 @@ export class WeatherApiProvider {
     this.url = 'http://api.wunderground.com/api/'+this.apiKey+'/conditions/q/';
   }
 
+  //this function takes the api key and city and state variables and puts them in order. Then it takes said information and sends an api request.
   getWeather(city, state) {
   	return this.http.get(this.url+state+'/'+city+'.json')
   		.map(res => res.json());
