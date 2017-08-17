@@ -27,7 +27,7 @@ export class HomePage {
   		}
   //this calls the 'getWeather' function and passes the city and state to it. It this subscribes to the observable and we call it weather. This returns the json object that the API hands back.
   	this.WeatherApi.getWeather(this.location.city, this.location.state).subscribe(weather => {
-  		console.log(weather);
+  		this.weather = weather.current_observation;
   	});
   }
 
