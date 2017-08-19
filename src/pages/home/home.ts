@@ -14,8 +14,10 @@ export class HomePage {
 	weather:any;
 	location: {
 		city:string,
-		state:string
+		state:string,
 	}
+
+	locationZip:any;
 
   constructor(
   	public navCtrl:NavController, 
@@ -24,14 +26,15 @@ export class HomePage {
   	) {
 
   }
-
+  	// this function is called when the user clicks on the serch icon. It brings the search page up.
   	search(){
-  		console.log('zipSearch fired');
   		this.navCtrl.push(SettingsPage);
   	}
 
   //this will fire when the component is loaded
 	ionViewWillEnter(){
+
+
 		//This grabs the value of 'location' for local storage and hands it to 'val'
 		this.storage.get('location').then((val) =>{
 			if (val != null) {
