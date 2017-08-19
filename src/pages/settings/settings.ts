@@ -38,7 +38,7 @@ export class SettingsPage {
   }
 
   //this function takes user input from the form when the button is pressed
-  saveForm(){
+  cityForm(){
   	let location ={
   		city: this.city,
   		state: this.state

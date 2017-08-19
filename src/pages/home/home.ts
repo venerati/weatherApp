@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 
 //bring in the weather api provider that will allow us to break out the json information for the user to consume
 import { WeatherApiProvider } from '../../providers/weather-api/weather-api';
+import { SettingsPage } from '../settings/settings';
 
 @Component({
   selector: 'page-home',
@@ -23,6 +24,11 @@ export class HomePage {
   	) {
 
   }
+
+  	search(){
+  		console.log('zipSearch fired');
+  		this.navCtrl.push(SettingsPage);
+  	}
 
   //this will fire when the component is loaded
 	ionViewWillEnter(){
