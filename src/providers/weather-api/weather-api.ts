@@ -24,4 +24,10 @@ export class WeatherApiProvider {
   		.map(res => res.json());
   }
 
+  //this function takes the api key and binds it with a zipcode
+  getWeatherZip(zip) {
+  	return this.http.get(this.url+zip+'.json')
+  		.map(res => res.json());
+  }
+
 }

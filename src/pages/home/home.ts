@@ -15,6 +15,7 @@ export class HomePage {
 	location: {
 		city:string,
 		state:string,
+		zip:string,
 	}
 
 	locationZip:any;
@@ -31,27 +32,37 @@ export class HomePage {
   		this.navCtrl.push(SettingsPage);
   	}
 
-  //this will fire when the component is loaded
+    //this will fire when the component is loaded
 	ionViewWillEnter(){
 
 
 		//This grabs the value of 'location' for local storage and hands it to 'val'
 		this.storage.get('location').then((val) =>{
-			if (val != null) {
+			if (val !== null) {
 				//this takes the val and turns it into a json string
 				this.location = JSON.parse(val);
-			} else {
-				// This is the default location the app will display when the user has not put a value in
-				this.location = {
-	  			city: 'Dallas',
-	  			state: 'TX'
-	  			}
-			}
+				console.log(val);
+				console.log(this.location.zip);
 
-		  //this calls the 'getWeather' function and passes the city and state to it. It this subscribes to the observable and we call it weather. This returns the json object that the API hands back.
-		  	this.WeatherApi.getWeather(this.location.city, this.location.state).subscribe(weather => {
-		  		this.weather = weather.current_observation;
-		  	});
+				//if statement to determin if the user has put in a zip or a city
+				if (this.location.city != null) {
+					console.log('city api has fired')
+					//this calls the 'getWeather' function and passes the city and state to it. It this subscribes to the observable and we call it weather. This returns the json object that the API hands back.
+				  	this.WeatherApi.getWeather(this.location.city, this.location.state).subscribe(weather => {
+				  		this.weather = weather.current_observation;
+				  	});
+				} else {
+					console.log('the zip api has fired')
+					//this calls the 'getWeatherZip' funtion and passes the zip into the api call.It this subscribes to the observable and we call it weather. This returns the json object that the API hands back.
+					this.WeatherApi.getWeatherZip(this.location.zip).subscribe(weather => {
+				  		this.weather = weather.current_observation;
+				  	});
+				}
+
+			} else {
+				//bring the settings page up for the user to put in location
+				this.navCtrl.push(SettingsPage);
+			}
 		});
   	}
 }
