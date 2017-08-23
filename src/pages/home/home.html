@@ -13,11 +13,24 @@
     <!-- this is the start of the weather info, this grid will not load if there is nothing in "weather" via ngIf -->
   <ion-grid *ngIf="weather">
     <ion-row>
-      <ion-col>
-        <h2 class="location">{{weather.display_location.full}}</h2>
+      <ion-col text-center>
+        <h1 class="location">{{weather.display_location.full}}</h1>
         <div class="icon"><img src="{{weather.icon_url}}"></div>
         <h3 class="descript">{{weather.weather}}</h3>
-        <h1 class="temp">{{weather.temp_f}}&deg;</h1>
+        <ion-list>
+          <ion-item>
+            Current Temp {{weather.temp_f}}&deg;
+          </ion-item>
+          <ion-item>
+            Feels like {{weather.feelslike_f}}&deg;
+          </ion-item>
+          <ion-item>
+            Wind {{weather.wind_string}}
+          </ion-item>
+          <ion-item>
+            humidity {{weather.relative_humidity}}
+          </ion-item>
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
