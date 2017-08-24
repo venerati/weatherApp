@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-row>
-      <ion-title>Weather Marshall</ion-title>
+      <ion-title text-center>Weather Marshall</ion-title>
         <button (click)="search()" ion-button small icon-start>
           <ion-icon name="search"></ion-icon>
         </button>
@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="homePage">
     <!-- this is the start of the weather info, this grid will not load if there is nothing in "weather" via ngIf -->
   <ion-grid *ngIf="weather">
     <ion-row>
@@ -25,13 +25,35 @@
             Feels like {{weather.feelslike_f}}&deg;
           </ion-item>
           <ion-item>
-            Wind {{weather.wind_string}}
+            Wind speed {{weather.wind_mph}} MPH from the {{weather.wind_dir}}
           </ion-item>
           <ion-item>
             humidity {{weather.relative_humidity}}
           </ion-item>
         </ion-list>
       </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- <ion-col col-4>
+        {{weatherForecast.txt_forecast.forecastday[2].title}}
+        <img src="{{weatherForecast.txt_forecast.forecastday[2].icon_url}}"> 
+        <ion-list>
+          <ion-item>
+            <img src="{{weatherForecast.simpleforecast.forecastday[1].icon_url}}">
+          </ion-item>
+          <ion-item>
+            {{weatherForecast.simpleforecast.forecastday[1].date.weekday}}
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col col-4>
+        {{weatherForecast.txt_forecast.forecastday[4].title}}
+        <img src="{{weatherForecast.txt_forecast.forecastday[2].icon_url}}">
+      </ion-col>
+      <ion-col col-4>
+        {{weatherForecast.txt_forecast.forecastday[6].title}}
+        <img src="{{weatherForecast.txt_forecast.forecastday[4].icon_url}}">
+      </ion-col> -->
     </ion-row>
   </ion-grid>
 </ion-content>

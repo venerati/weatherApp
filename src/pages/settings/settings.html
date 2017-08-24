@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>settings</ion-title>
+  <ion-navbar text-center>
+    <ion-title>Search settings</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,6 +11,7 @@
 	<ion-grid>
 		<ion-row>
 			<ion-col>
+			<h1 text-center>Search by City/State</h1>
 				<ion-list>
 					<form (ngSubmit)="cityForm()">
 						<ion-item>
@@ -32,6 +33,7 @@
 		</ion-row>
 		<ion-row>
 			<ion-col>
+				<h1 text-center>Search by Zip Code</h1>
 				<ion-list>
 					<form (ngSubmit)="zipForm()">
 						<ion-item>
@@ -40,7 +42,7 @@
 							</ion-label>
 							<ion-input [(ngModel)]="zip" name="zip" type="text"></ion-input>
 						</ion-item>
-						<button ion-button type="submit" block>Save</button>
+						<button ion-button type="submit" block>Search</button>
 					</form>
 				</ion-list>
 			</ion-col>

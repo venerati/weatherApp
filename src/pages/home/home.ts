@@ -12,13 +12,12 @@ import { SettingsPage } from '../settings/settings';
 })
 export class HomePage {
 	weather:any;
+	weatherForecast:any;
 	location: {
 		city:string,
 		state:string,
 		zip:string,
 	}
-
-	locationZip:any;
 
   constructor(
   	public navCtrl:NavController, 
@@ -51,12 +50,26 @@ export class HomePage {
 				  	this.WeatherApi.getWeather(this.location.city, this.location.state).subscribe(weather => {
 				  		this.weather = weather.current_observation;
 				  	});
+
+				  	console.log(this.weather);
+
+				  	this.WeatherApi.getWeatherForecast(this.location.city, this.location.state).subscribe(weatherForecast => {
+				  		this.weatherForecast = weatherForecast.forecast;
+				  	});
+
+				  	console.log(this.weatherForecast);
 				} else {
 					console.log('the zip api has fired')
 					//this calls the 'getWeatherZip' funtion and passes the zip into the api call.It this subscribes to the observable and we call it weather. This returns the json object that the API hands back.
 					this.WeatherApi.getWeatherZip(this.location.zip).subscribe(weather => {
 				  		this.weather = weather.current_observation;
 				  	});
+
+				  	this.WeatherApi.getWeatherForecastZip(this.location.zip).subscribe(weatherForecast => {
+				  		this.weatherForecast = weatherForecast.forecast;
+				  	});
+
+				  	console.log(this.weatherForecast);
 				}
 
 			} else {

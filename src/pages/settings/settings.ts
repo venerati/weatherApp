@@ -19,24 +19,6 @@ export class SettingsPage {
   	public navParams: NavParams,
   	private storage: Storage
   	) {
-
-  	// //calls the storage component and pulls the location object then binds it's values to 'val'
-  	// this.storage.get('location').then((val) => {
-  	// 	if(val != null) {
-  	// 		//create a the variable 'location' to handle user input
-  	// 		let location = JSON.parse(val);
-  	// 		this.city = location.city;
-  	// 		this.state = location.state;
-  	// 		this.zip = location.zip;
-
-  	// 	} else {
-
-  	// 		//sets the value of storage object to the following if val is null
-  	// 		this.city = 'Dallas';
-  	// 		this.state = 'TX';
-  	// 		this.zip = '75077';
-  	// 	}
-  	// });
   }
 
   ionViewDidLoad() {

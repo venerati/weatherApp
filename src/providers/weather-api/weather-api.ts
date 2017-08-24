@@ -12,10 +12,15 @@ import 'rxjs/add/operator/map';
 export class WeatherApiProvider {
 	apiKey = '54656626f656a67c';
 	url;
+  urlForecast;
 
   constructor(public http: Http) {
     console.log('Hello WeatherApiProvider Provider');
+    //creates the a string that will be bound to the car 'url' to be used to access the weather api
     this.url = 'http://api.wunderground.com/api/'+this.apiKey+'/conditions/q/';
+
+    //creates the a string that will be bound to the car 'urlForcast' to be used to access the weather api
+    this.urlForecast = 'http://api.wunderground.com/api/'+this.apiKey+'/forecast/q/';
   }
 
   //this function takes the api key and city and state variables and puts them in order. Then it takes said information and sends an api request.
@@ -24,10 +29,24 @@ export class WeatherApiProvider {
   		.map(res => res.json());
   }
 
-  //this function takes the api key and binds it with a zipcode
+  //this method takes the api key and binds it with a city and state and makes a call for forcast info
+  getWeatherForecast(city, state) {
+    return this.http.get(this.urlForecast+state+'/'+city+'.json')
+      .map(res => res.json());
+  }
+
+  //this function takes the api key and binds it with a zipcode to request currecnt weather information
   getWeatherZip(zip) {
   	return this.http.get(this.url+zip+'.json')
   		.map(res => res.json());
   }
+
+  //this function takes the api key and binds it with a zipcode to request weather forcast infomation
+  getWeatherForecastZip(zip) {
+    return this.http.get(this.urlForecast+zip+'.json')
+      .map(res => res.json());
+  }
+
+
 
 }
