@@ -5,3 +5,26 @@ page-home {
 .button-small-md{
 	margin-left: -14%;
 }
+
+ion-card {
+	color: color($colors, light);
+	padding: 1rem;
+}
+
+ion-card img {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+ion-card-header {
+	background-color: color($colors, tertiary);
+	padding: .5rem !important;
+
+}
+
+ion-thumbnail {
+	width: 5rem;
+	height: auto;
+    margin: auto;
+    display: block;
+}

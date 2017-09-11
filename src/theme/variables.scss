@@ -5,7 +5,7 @@ $app-direction: ltr;
 $colors: (
 	primary: #3692f4,
 	secondary: #eef6ff,
-	tertiary: #93c6ff,
+	tertiary: #ffc32b,
 	light: #f4f4f4,
 	dark: #172131,
 	danger: #09BC8A,
@@ -27,7 +27,7 @@ $toolbar-md-background: color($colors, tertiary);
 $tabs-md-background: color($colors, tertiary); 
 $tabs-md-tab-color-active: color($colors, light);
 
-$list-md-background-color: color($colors, tertiary);
+$list-md-background-color: color($colors, primary);
 $list-md-border-color: color($colors, light);
 $list-md-text-color: color($colors, light);
 
