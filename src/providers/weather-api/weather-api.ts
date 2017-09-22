@@ -47,6 +47,20 @@ export class WeatherApiProvider {
       .map(res => res.json());
   }
 
+    //this function takes the api key and binds it with a zipcode to request currecnt weather information
+  getWeatherGPS(lat, long) {
+    return this.http.get(this.url+lat+','+long+'.json')
+      .map(res => res.json());
+  }
+
+  //this function takes the api key and binds it with a zipcode to request weather forcast infomation
+  getWeatherForecastGPS(lat,long) {
+    return this.http.get(this.urlForecast+lat+','+long+'.json')
+      .map(res => res.json());
+  }
+
+
+
 
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
+
 //bring in the weather api provider that will allow us to break out the json information for the user to consume
 import { WeatherApiProvider } from '../../providers/weather-api/weather-api';
 import { SettingsPage } from '../settings/settings';
@@ -17,6 +18,8 @@ export class HomePage {
 		city:string,
 		state:string,
 		zip:string,
+		lat:any,
+		long:any,
 	}
 
   constructor(
@@ -41,7 +44,6 @@ export class HomePage {
 				//this takes the val and turns it into a json string
 				this.location = JSON.parse(val);
 				console.log(val);
-				console.log(this.location.zip);
 
 				//if statement to determin if the user has put in a zip or a city
 				if (this.location.city != null) {
@@ -58,7 +60,8 @@ export class HomePage {
 				  	});
 
 				  	console.log(this.weatherForecast);
-				} else {
+				//checks to see if zip holds a value, if it does then this fires, if not then gps will fire
+				} else if (this.location.zip != null) {
 					console.log('the zip api has fired')
 					//this calls the 'getWeatherZip' funtion and passes the zip into the api call.It this subscribes to the observable and we call it weather. This returns the json object that the API hands back.
 					this.WeatherApi.getWeatherZip(this.location.zip).subscribe(weather => {
@@ -70,6 +73,20 @@ export class HomePage {
 				  	});
 
 				  	console.log(this.weatherForecast);
+				} else {
+					console.log('the gps api has fired')
+					console.log(this.location.lat, this.location.long)
+					//this calls the 'getWeatherZip' funtion and passes the zip into the api call.It this subscribes to the observable and we call it weather. This returns the json object that the API hands back.
+					this.WeatherApi.getWeatherGPS(this.location.lat, this.location.long).subscribe(weather => {
+				  		this.weather = weather.current_observation;
+				  	});
+
+				  	this.WeatherApi.getWeatherForecastGPS(this.location.lat, this.location.long).subscribe(weatherForecast => {
+				  		this.weatherForecast = weatherForecast.forecast;
+				  	});
+
+				  	console.log(this.weatherForecast);
+
 				}
 
 			} else {
