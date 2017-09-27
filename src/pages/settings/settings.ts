@@ -78,14 +78,11 @@ export class SettingsPage {
     //turn the location object into a json string
     this.storage.set('location', JSON.stringify(location));
 
-
+    //pop back to the root of the stack aka the home page
+    this.navCtrl.popToRoot();
 
      }).catch((error) => {
       console.log('Error getting location', error);
     });
-
-    //pop back to the root of the stack aka the home page
-    this.navCtrl.popToRoot();
-
   }
 }
