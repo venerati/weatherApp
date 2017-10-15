@@ -14,13 +14,50 @@ page-home {
 	margin-top: 1.5rem;
 }
 
+.tempCurr{
+	font-size: 6.5rem;
+}
+
+.grid {
+	margin-left: -2rem;
+	width:112%;
+	padding: 0px;
+}
+
 .button-small-md{
 	margin-left: -14%;
+}
+.icon {
+	padding-left: 1rem !important;	
+	padding-right: 1rem !important;	
+}
+
+.detailMain {
+	background-color: color($colors, tertiary);
+}
+
+.refresh {
+	width: 50%;
+}
+
+.descript {
+	float:right;
+	margin-left: 1rem;
+}
+
+.foreTitle .toolbar-title-md  {
+	font-size: 3rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 ion-card {
 	color: color($colors, light);
 	padding: 1rem;
+}
+
+ion-icon {
+	
 }
 
 ion-card img {
