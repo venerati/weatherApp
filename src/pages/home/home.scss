@@ -32,8 +32,17 @@ page-home {
 	padding-right: 1rem !important;	
 }
 
+.tempMain {
+	margin-bottom: .5rem;
+}
+
 .detailMain {
 	background-color: color($colors, tertiary);
+}
+
+.dayTitle .toolbar-title-md {
+	font-size: 3rem;
+	padding: .8rem;
 }
 
 .refresh {
@@ -41,8 +50,8 @@ page-home {
 }
 
 .descript {
-	float:right;
 	margin-left: 1rem;
+	height: 52px;
 }
 
 .foreTitle .toolbar-title-md  {

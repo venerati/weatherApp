@@ -16,9 +16,8 @@
     <ion-row>
       <ion-col text-center>
         <h1 class="location">{{weather.display_location.full}}</h1>
-        <ion-row>
+        <ion-row class="tempMain">
           <ion-col col-3>
-    
           </ion-col>
           <ion-col col-6>
             <h1 class="tempCurr">{{mainTemp}}</h1>
@@ -32,18 +31,27 @@
           </ion-col>
         </ion-row>
         <ion-row class="detailMain">
+            <ion-title class="dayTitle">{{weatherForecast.simpleforecast.forecastday[0].date.weekday}}
+            </ion-title> 
+        </ion-row>
+
+        <ion-row class="detailMain">
           <ion-col>
-            <ion-title class="">{{weatherForecast.simpleforecast.forecastday[0].date.weekday}}</ion-title> 
-            <div class="icon">
-              <img src="{{weather.icon_url}}"><h4 class="descript">{{weather.weather}}</h4>
-            </div>            
+            <ion-row>
+              <div class="icon">
+                <img src="{{weather.icon_url}}">
+              </div>
+            </ion-row>  
+            <ion-row><h4>Wind </h4></ion-row>
+            <ion-row><h4>Humidity </h4></ion-row>          
           </ion-col>
           <ion-col> 
-            <ion-row><h4>Wind </h4> {{weather.wind_mph}} MPH from {{weather.wind_dir}}</ion-row>
-            <ion-row><h4>Humidity </h4> {{weather.relative_humidity}}</ion-row>
+            <ion-row class="descript">
+              {{weather.weather}}
+            </ion-row>
+            <ion-row> {{weather.wind_mph}} MPH from {{weather.wind_dir}}</ion-row>
+            <ion-row> {{weather.relative_humidity}}</ion-row>
             <ion-row></ion-row>
-            
-            
           </ion-col>
         </ion-row>
       </ion-col>
