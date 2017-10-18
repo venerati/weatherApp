@@ -2,6 +2,14 @@ page-home {
 
 }
 
+.toolbar-background {
+	background-color: color($colors, title);
+}
+
+.currentCond {
+	padding: 0px;
+}
+
 .headerLogo {
 	display:inline-block;
 	margin-right: -12%;
@@ -27,9 +35,8 @@ page-home {
 .button-small-md{
 	margin-left: -14%;
 }
-.icon {
-	padding-left: 1rem !important;	
-	padding-right: 1rem !important;	
+.iconMain {
+	margin: auto;	
 }
 
 .tempMain {
@@ -37,7 +44,23 @@ page-home {
 }
 
 .detailMain {
+	background-color: #fff;
+	box-shadow: inset 0px 0px 18px 0px rgba(130,130,130,0.48);
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+}
+
+.detailMainTitle {
 	background-color: color($colors, tertiary);
+
+}
+
+.weatherWeather {
+	padding-top: 6%}
+
+.detailMainWeather {
+	background-color: color($colors, tertiary);
+	
 }
 
 .dayTitle .toolbar-title-md {
@@ -51,13 +74,29 @@ page-home {
 
 .descript {
 	margin-left: 1rem;
-	height: 52px;
+	height: 42px;
+}
+
+.descriptTxt {
+	margin-left: 3rem;
+	height: 32px;
+	padding-top: 0.4rem;
+	font-weight: 400;
+	font-size: 19px;
+}
+
+.descriptInfo {
+	padding-top: 0.5rem;
+	margin-left: 1rem;
+	height: 32px;
 }
 
 .foreTitle .toolbar-title-md  {
-	font-size: 3rem;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	font-size: 2.5rem;
+	margin-bottom: 1.5rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	background-color: color($colors, title);
 }
 
 ion-card {

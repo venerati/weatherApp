@@ -14,7 +14,7 @@
     <!-- this is the start of the weather info, this grid will not load if there is nothing in "weather" via ngIf -->
   <ion-grid *ngIf="weather">
     <ion-row>
-      <ion-col text-center>
+      <ion-col text-center class="currentCond">
         <h1 class="location">{{weather.display_location.full}}</h1>
         <ion-row class="tempMain">
           <ion-col col-3>
@@ -30,28 +30,40 @@
             </button>
           </ion-col>
         </ion-row>
-        <ion-row class="detailMain">
+<!--         <ion-row class="detailMainTitle">
             <ion-title class="dayTitle">{{weatherForecast.simpleforecast.forecastday[0].date.weekday}}
             </ion-title> 
-        </ion-row>
-
-        <ion-row class="detailMain">
-          <ion-col>
+        </ion-row> -->
+        <ion-row class="detailMainWeather">
+          <ion-col col-7>
+            <ion-title class="dayTitle">{{weatherForecast.simpleforecast.forecastday[0].date.weekday}}
+            </ion-title> 
+          </ion-col>
+          <ion-col col-2>
             <ion-row>
-              <div class="icon">
+              <div class="icon iconMain">
                 <img src="{{weather.icon_url}}">
               </div>
-            </ion-row>  
-            <ion-row><h4>Wind </h4></ion-row>
-            <ion-row><h4>Humidity </h4></ion-row>          
-          </ion-col>
-          <ion-col> 
-            <ion-row class="descript">
-              {{weather.weather}}
             </ion-row>
-            <ion-row> {{weather.wind_mph}} MPH from {{weather.wind_dir}}</ion-row>
-            <ion-row> {{weather.relative_humidity}}</ion-row>
-            <ion-row></ion-row>
+          </ion-col>
+          <ion-col col-3 class="weatherWeather">
+            {{weather.weather}}
+          </ion-col>
+        </ion-row>
+        <ion-row class="detailMain">
+          <ion-col col-3>
+            <ion-row class="descriptTxt">Wind</ion-row>
+            <ion-row class="descriptTxt">Direction</ion-row>
+            <ion-row class="descriptTxt">Humidity</ion-row>
+            <ion-row class="descriptTxt">Dewpoint</ion-row>
+          </ion-col>
+          <ion-col col-6>            
+          </ion-col>
+          <ion-col col-3>
+            <ion-row class="descriptInfo">{{weather.wind_mph}} MPH</ion-row>
+            <ion-row class="descriptInfo">{{weather.wind_dir}}</ion-row>
+            <ion-row class="descriptInfo">{{weather.relative_humidity}}</ion-row>
+            <ion-row class="descriptInfo">{{weather.dewpoint_f}}</ion-row>
           </ion-col>
         </ion-row>
       </ion-col>
