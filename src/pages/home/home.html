@@ -68,104 +68,13 @@
         </ion-row>
       </ion-col>
     </ion-row>
-<!-- 
-    <ion-row>
+  </ion-grid>
 
-      <ion-card text-center>
-        <ion-card-header> Now </ion-card-header>
-        <ion-grid>
-          <ion-row>
-            <ion-col>Current Temp {{weather.temp_f}}&deg;</ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>Feels like {{weather.feelslike_f}}&deg;</ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>Wind speed {{weather.wind_mph}} MPH from the {{weather.wind_dir}}</ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>Humidity {{weather.relative_humidity}}</ion-col>
-          </ion-row>
-        </ion-grid>
-        <ion-list>
-          <ion-item>
-            Current Temp {{weather.temp_f}}&deg;
-          </ion-item>
-          <ion-item>
-            Feels like {{weather.feelslike_f}}&deg;
-          </ion-item>
-          <ion-item>
-            Wind speed asdfadfds {{weather.wind_mph}} MPH from the {{weather.wind_dir}}
-          </ion-item>
-          <ion-item>
-            Humidity {{weather.relative_humidity}}
-          </ion-item>
-        </ion-list>
-      </ion-card>
-    </ion-row> -->
 
+  <ion-grid>
     <ion-row text-center>
-      <ion-title class="foreTitle">Forecast</ion-title>      
-      <ion-card>
-        <ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[2].title}}
-        </ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[2].conditions}}
-        <ion-thumbnail>
-          <img src="{{weatherForecast.txt_forecast.forecastday[2].icon_url}}"> 
-        </ion-thumbnail>
-          {{weatherForecast.txt_forecast.forecastday[2].fcttext}}
-        </ion-card>
-        <ion-card>
-        <ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[3].title}}
-        </ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[3].conditions}}
-        <ion-thumbnail>
-          <img src="{{weatherForecast.txt_forecast.forecastday[3].icon_url}}"> 
-        </ion-thumbnail>
-          {{weatherForecast.txt_forecast.forecastday[3].fcttext}}
-      </ion-card>
-      <ion-card>
-        <ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[4].title}}
-        </ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[4].conditions}}
-        <ion-thumbnail>
-          <img src="{{weatherForecast.txt_forecast.forecastday[4].icon_url}}"> 
-        </ion-thumbnail>
-          {{weatherForecast.txt_forecast.forecastday[4].fcttext}}
-        </ion-card>
-        <ion-card>
-        <ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[5].title}}
-        </ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[5].conditions}}
-        <ion-thumbnail>
-          <img src="{{weatherForecast.txt_forecast.forecastday[5].icon_url}}"> 
-        </ion-thumbnail>
-          {{weatherForecast.txt_forecast.forecastday[5].fcttext}}
-      </ion-card>
-      <ion-card>
-        <ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[6].title}}
-        </ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[6].conditions}}
-        <ion-thumbnail>
-          <img src="{{weatherForecast.txt_forecast.forecastday[6].icon_url}}"> 
-        </ion-thumbnail>
-          {{weatherForecast.txt_forecast.forecastday[6].fcttext}}
-        </ion-card>
-        <ion-card>
-        <ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[7].title}}
-        </ion-card-header>
-          {{weatherForecast.txt_forecast.forecastday[7].conditions}}
-        <ion-thumbnail>
-          <img src="{{weatherForecast.txt_forecast.forecastday[7].icon_url}}"> 
-        </ion-thumbnail>
-          {{weatherForecast.txt_forecast.forecastday[7].fcttext}}
-      </ion-card>
+      <ion-title class="foreTitle">Forecast</ion-title>
+          <canvas #forecastCanvas></canvas> 
     </ion-row>
   </ion-grid>
 </ion-content>

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Chart } from 'chart.js';
 
 
 //bring in the weather api provider that will allow us to break out the json information for the user to consume
@@ -23,6 +24,10 @@ export class HomePage {
 	}
 	mainTemp:any;
 
+	@ViewChild('forecastCanvas') forecastCanvas;
+
+	foreChart: any;
+
   constructor(
   	public navCtrl:NavController, 
   	private WeatherApi:WeatherApiProvider,
@@ -38,6 +43,74 @@ export class HomePage {
 		console.log("maintempfunc has fired");
 		console.log(this.mainTemp);
 	}
+
+	forecastChart(){
+
+		 var dayOne = this.weatherForecast.simpleforecast.forecastday[0].date.weekday.substring(0,3);
+		 var dayTwo = this.weatherForecast.simpleforecast.forecastday[1].date.weekday.substring(0,3);
+		 var dayThree = this.weatherForecast.simpleforecast.forecastday[2].date.weekday.substring(0,3);
+		 var dayFour = this.weatherForecast.simpleforecast.forecastday[3].date.weekday.substring(0,3);
+
+		 var highDayOne = this.weatherForecast.simpleforecast.forecastday[0].high.fahrenheit;
+		 var highDaytwo = this.weatherForecast.simpleforecast.forecastday[1].high.fahrenheit;
+		 var highDayThree = this.weatherForecast.simpleforecast.forecastday[2].high.fahrenheit;
+		 var highDayFour = this.weatherForecast.simpleforecast.forecastday[3].high.fahrenheit;
+
+		this.foreChart = new Chart(this.forecastCanvas.nativeElement, {
+
+			type: 'line',
+			data: {
+				labels: [ dayOne, dayTwo, dayThree, dayFour],
+				datasets: [
+					{
+						label: "High",
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(75,192,192,0.4)",
+                        borderColor: "rgba(75,192,192,1)",
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.5,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: "rgba(75,192,192,1)",
+                        pointBackgroundColor: "#fff",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 1,
+                        pointHitRadius: 10,
+                        data: [highDayOne, highDaytwo, highDayThree, highDayFour],
+                        spanGaps: false,
+					},
+					{
+						label: "low",
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(75,192,192,0.4)",
+                        borderColor: "rgba(75,192,192,1)",
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.5,
+                        borderJoinStyle: 'miter',
+                        pointBorderColor: "rgba(75,192,192,1)",
+                        pointBackgroundColor: "#fff",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 1,
+                        pointHitRadius: 10,
+                        data: [56, 45, 44, 66],
+                        spanGaps: false,
+					}
+				]
+			}
+		})
+  	}
+
 
   	dataCall(){
   		//This grabs the value of 'location' for local storage and hands it to 'val'
@@ -60,6 +133,7 @@ export class HomePage {
 
 				  	this.WeatherApi.getWeatherForecast(this.location.city, this.location.state).subscribe(weatherForecast => {
 				  		this.weatherForecast = weatherForecast.forecast;
+				  		this.forecastChart();
 				  	});
 
 				  	console.log(this.weatherForecast);
@@ -74,6 +148,7 @@ export class HomePage {
 
 				  	this.WeatherApi.getWeatherForecastZip(this.location.zip).subscribe(weatherForecast => {
 				  		this.weatherForecast = weatherForecast.forecast;
+				  		this.forecastChart();
 				  	});
 
 				  	console.log(this.weatherForecast);
@@ -88,6 +163,7 @@ export class HomePage {
 
 				  	this.WeatherApi.getWeatherForecastGPS(this.location.lat, this.location.long).subscribe(weatherForecast => {
 				  		this.weatherForecast = weatherForecast.forecast;
+				  		this.forecastChart();
 				  	});
 
 				  	console.log(this.weatherForecast);
@@ -117,5 +193,5 @@ export class HomePage {
 	ionViewWillEnter(){
 
 		this.dataCall()
-  	}
+	}
 }
