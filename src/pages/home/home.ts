@@ -56,40 +56,50 @@ export class HomePage {
 		 var highDayThree = this.weatherForecast.simpleforecast.forecastday[2].high.fahrenheit;
 		 var highDayFour = this.weatherForecast.simpleforecast.forecastday[3].high.fahrenheit;
 
+		 var lowDayOne = this.weatherForecast.simpleforecast.forecastday[0].low.fahrenheit;
+		 var lowDayTwo = this.weatherForecast.simpleforecast.forecastday[1].low.fahrenheit;
+		 var lowDayThree = this.weatherForecast.simpleforecast.forecastday[2].low.fahrenheit;
+		 var lowDayFour = this.weatherForecast.simpleforecast.forecastday[3].low.fahrenheit;
+
+		 var precipDayOne = this.weatherForecast.simpleforecast.forecastday[0].pop;
+		 var precipDayTwo = this.weatherForecast.simpleforecast.forecastday[1].pop;
+		 var precipDayThree = this.weatherForecast.simpleforecast.forecastday[2].pop;
+		 var precipDayFour = this.weatherForecast.simpleforecast.forecastday[3].pop;
+
 		this.foreChart = new Chart(this.forecastCanvas.nativeElement, {
 
 			type: 'line',
 			data: {
-				labels: [ dayOne, dayTwo, dayThree, dayFour],
+				labels: [ dayOne,, dayTwo,, dayThree,, dayFour,,],
 				datasets: [
 					{
-						label: "High",
+						label: "Temp",
                         fill: false,
-                        lineTension: 0.1,
-                        backgroundColor: "rgba(75,192,192,0.4)",
-                        borderColor: "rgba(75,192,192,1)",
+                        lineTension: 0.3,
+                        backgroundColor: "#fcdd16",
+                        borderColor: "#f4e242",
                         borderCapStyle: 'butt',
                         borderDash: [],
                         borderDashOffset: 0.5,
                         borderJoinStyle: 'miter',
-                        pointBorderColor: "rgba(75,192,192,1)",
+                        pointBorderColor: "#fcdd16",
                         pointBackgroundColor: "#fff",
                         pointBorderWidth: 1,
                         pointHoverRadius: 5,
-                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                        pointHoverBackgroundColor: "#fcdd16",
                         pointHoverBorderColor: "rgba(220,220,220,1)",
                         pointHoverBorderWidth: 2,
                         pointRadius: 1,
                         pointHitRadius: 10,
-                        data: [highDayOne, highDaytwo, highDayThree, highDayFour],
+                        data: [highDayOne,lowDayOne, highDaytwo,lowDayTwo, highDayThree,lowDayThree, highDayFour,lowDayFour],
                         spanGaps: false,
 					},
 					{
-						label: "low",
+						label: "Precipitation",
                         fill: false,
-                        lineTension: 0.1,
-                        backgroundColor: "rgba(75,192,192,0.4)",
-                        borderColor: "rgba(75,192,192,1)",
+                        lineTension: 0.3,
+                        backgroundColor: "#3239ff",
+                        borderColor: "#44b4ff",
                         borderCapStyle: 'butt',
                         borderDash: [],
                         borderDashOffset: 0.5,
@@ -103,10 +113,43 @@ export class HomePage {
                         pointHoverBorderWidth: 2,
                         pointRadius: 1,
                         pointHitRadius: 10,
-                        data: [56, 45, 44, 66],
-                        spanGaps: false,
+                        data: [precipDayOne,, precipDayTwo,, precipDayThree,, precipDayFour,,],
+                        spanGaps: true,
 					}
 				]
+			},
+			options: {
+				scales: {
+					yAxes:[{
+						ticks:{
+							beginAtZero: true,
+							// suggestedMax: 100,
+							// suggestedMin: -10,
+							stepSize: 10,
+						}
+					}]
+				},
+
+				layout: {
+					padding:{
+						left: 10,
+						right:25,
+						top: 0,
+						bottomt: 0
+					}
+				},
+				elements: {
+					tension: 1,
+					fill: 'bottom',
+					backgroundColor: '#111111',
+				},
+				legend: {
+					display: true,
+					lables:{
+						boxWidth: 10,
+						fontColor: '#fff'
+					}
+				}
 			}
 		})
   	}
