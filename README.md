@@ -1,6 +1,6 @@
 This project is a basic weather application build in the Ionic 3 framework. It utilizes the wunderground api for it's weather information provider.
 
-Current version: 0.0.2
+Current version: 0.1.0
 
 Author: James Marshall
 

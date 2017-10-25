@@ -76,9 +76,67 @@
 
 
   <ion-grid>
-    <ion-row text-center>
-      <ion-title class="foreTitle">Forecast</ion-title>
-          <canvas #forecastCanvas></canvas> 
+    <ion-title text-center class="foreTitle">Forecast</ion-title>
+    <ion-row class="foreIcons" *ngIf="weather">
+      <ion-col text-center col-3>
+        <ion-row>
+          <ion-col text-center>
+            {{dayOne}}
+          </ion-col>
+        </ion-row >
+        <img src="{{weatherForecast.simpleforecast.forecastday[0].icon_url}}">
+        <ion-row>
+          <ion-col text-center>
+            {{weatherForecast.simpleforecast.forecastday[0].high.fahrenheit}}&deg;  |
+            {{weatherForecast.simpleforecast.forecastday[0].low.fahrenheit}}&deg; 
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col text-center col-3>
+        <ion-row>
+          <ion-col text-center>
+            {{dayTwo}}
+          </ion-col>
+        </ion-row >
+        <img src="{{weatherForecast.simpleforecast.forecastday[1].icon_url}}">
+        <ion-row>
+          <ion-col text-center>
+            {{weatherForecast.simpleforecast.forecastday[1].high.fahrenheit}}&deg;  |
+            {{weatherForecast.simpleforecast.forecastday[1].low.fahrenheit}}&deg; 
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col text-center col-3>
+        <ion-row>
+          <ion-col text-center>
+            {{dayThree}}
+          </ion-col>
+        </ion-row >
+        <img src="{{weatherForecast.simpleforecast.forecastday[2].icon_url}}">
+        <ion-row>
+          <ion-col text-center>
+            {{weatherForecast.simpleforecast.forecastday[2].high.fahrenheit}}&deg;  |
+            {{weatherForecast.simpleforecast.forecastday[2].low.fahrenheit}}&deg; 
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col text-center col-3>
+        <ion-row>
+          <ion-col text-center>
+            {{dayFour}}
+          </ion-col>
+        </ion-row >
+        <img src="{{weatherForecast.simpleforecast.forecastday[3].icon_url}}">
+        <ion-row>
+          <ion-col text-center>
+            {{weatherForecast.simpleforecast.forecastday[3].high.fahrenheit}}&deg;  |
+            {{weatherForecast.simpleforecast.forecastday[3].low.fahrenheit}}&deg; 
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="chart" text-center>
+      <canvas #forecastCanvas></canvas> 
     </ion-row>
   </ion-grid>
 </ion-content>

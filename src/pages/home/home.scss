@@ -97,6 +97,17 @@ page-home {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	background-color: color($colors, title);
+	color: color($colors, white);
+}
+
+.foreIcons {
+	padding-left: 2rem;
+	padding-right: 2rem;
+	margin-bottom: 2rem;
+}
+
+.chart {
+	background-color: color($colors, white);
 }
 
 ion-card {

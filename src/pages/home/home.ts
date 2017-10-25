@@ -23,6 +23,10 @@ export class HomePage {
 		long:any,
 	}
 	mainTemp:any;
+	dayOne:any;
+	dayTwo:any;
+	dayThree:any;
+	dayFour:any;
 
 	@ViewChild('forecastCanvas') forecastCanvas;
 
@@ -46,10 +50,10 @@ export class HomePage {
 
 	forecastChart(){
 
-		 var dayOne = this.weatherForecast.simpleforecast.forecastday[0].date.weekday.substring(0,3);
-		 var dayTwo = this.weatherForecast.simpleforecast.forecastday[1].date.weekday.substring(0,3);
-		 var dayThree = this.weatherForecast.simpleforecast.forecastday[2].date.weekday.substring(0,3);
-		 var dayFour = this.weatherForecast.simpleforecast.forecastday[3].date.weekday.substring(0,3);
+		 this.dayOne = this.weatherForecast.simpleforecast.forecastday[0].date.weekday.substring(0,3);
+		 this.dayTwo = this.weatherForecast.simpleforecast.forecastday[1].date.weekday.substring(0,3);
+		 this.dayThree = this.weatherForecast.simpleforecast.forecastday[2].date.weekday.substring(0,3);
+		 this.dayFour = this.weatherForecast.simpleforecast.forecastday[3].date.weekday.substring(0,3);
 
 		 var highDayOne = this.weatherForecast.simpleforecast.forecastday[0].high.fahrenheit;
 		 var highDaytwo = this.weatherForecast.simpleforecast.forecastday[1].high.fahrenheit;
@@ -67,35 +71,10 @@ export class HomePage {
 		 var precipDayFour = this.weatherForecast.simpleforecast.forecastday[3].pop;
 
 		this.foreChart = new Chart(this.forecastCanvas.nativeElement, {
-
-			type: 'line',
-			data: {
-				labels: [ dayOne,, dayTwo,, dayThree,, dayFour,,],
-				datasets: [
-					{
-						label: "Temp",
-                        fill: false,
-                        lineTension: 0.3,
-                        backgroundColor: "#fcdd16",
-                        borderColor: "#f4e242",
-                        borderCapStyle: 'butt',
-                        borderDash: [],
-                        borderDashOffset: 0.5,
-                        borderJoinStyle: 'miter',
-                        pointBorderColor: "#fcdd16",
-                        pointBackgroundColor: "#fff",
-                        pointBorderWidth: 1,
-                        pointHoverRadius: 5,
-                        pointHoverBackgroundColor: "#fcdd16",
-                        pointHoverBorderColor: "rgba(220,220,220,1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        data: [highDayOne,lowDayOne, highDaytwo,lowDayTwo, highDayThree,lowDayThree, highDayFour,lowDayFour],
-                        spanGaps: false,
-					},
-					{
-						label: "Precipitation",
+			  type: 'bar',
+			  data: {
+			    datasets: [{
+			           	label: "Precipitation",
                         fill: false,
                         lineTension: 0.3,
                         backgroundColor: "#3239ff",
@@ -114,11 +93,33 @@ export class HomePage {
                         pointRadius: 1,
                         pointHitRadius: 10,
                         data: [precipDayOne,, precipDayTwo,, precipDayThree,, precipDayFour,,],
-                        spanGaps: true,
-					}
-				]
-			},
-			options: {
+			        }, {
+			          label: 'Temp',
+			          data: [highDayOne,lowDayOne, highDaytwo,lowDayTwo, highDayThree,lowDayThree, highDayFour,lowDayFour],
+			          fill: false,
+                      lineTension: 0.3,
+                      backgroundColor: "#fcdd16",
+                      borderColor: "#f4e242",
+                      borderCapStyle: 'butt',
+                      borderDash: [],
+                      borderDashOffset: 0.5,
+                      borderJoinStyle: 'miter',
+                      pointBorderColor: "#fcdd16",
+                      pointBackgroundColor: "#fff",
+                      pointBorderWidth: 1,
+                      pointHoverRadius: 5,
+                      pointHoverBackgroundColor: "#fcdd16",
+                      pointHoverBorderColor: "rgba(220,220,220,1)",
+                      pointHoverBorderWidth: 2,
+                      pointRadius: 1,
+                      pointHitRadius: 10,
+                      spanGaps: true,
+			          // Changes this dataset to become a line
+			          type: 'line'
+			        }],
+			    labels: [ this.dayOne,, this.dayTwo,, this.dayThree,, this.dayFour,,]
+			  },
+			  options: {
 				scales: {
 					yAxes:[{
 						ticks:{
@@ -151,7 +152,7 @@ export class HomePage {
 					}
 				}
 			}
-		})
+		});
   	}
 
 
